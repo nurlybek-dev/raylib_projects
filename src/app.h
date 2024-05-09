@@ -9,6 +9,7 @@
 
 #include "ping_pong/PingPong.h"
 #include "arkanoid/Arkanoid.h"
+#include "asteroids/Asteroids.h"
 
 class App {
 public:
@@ -45,6 +46,7 @@ public:
                     if(runningApp->Closed()) {
                         delete runningApp;
                         runningApp = nullptr;
+                        
                     } else {
                         runningApp->Run();
                     }
@@ -56,6 +58,10 @@ public:
                     else if (GuiButton({center.x - 50, 130, 100, 20}, "Arkanoid"))
                     {
                         runningApp = new Arkanoid::Arkanoid();
+                    }
+                    else if (GuiButton({center.x - 50, 160, 100, 20}, "Asteroids"))
+                    {
+                        runningApp = new Asteroids::Asteroids();
                     }
                 } 
 

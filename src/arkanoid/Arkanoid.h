@@ -155,9 +155,6 @@ namespace Arkanoid
         bool ballInGame = false;
         bool gameCompleted = false;
         bool gameOver = false;
-
-        const int screenWidth = 500;
-        const int screenHeight = 800;
 };
 } // namespace Arkanoid
 
