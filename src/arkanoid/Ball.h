@@ -54,6 +54,7 @@ namespace Arkanoid
                             velocity.y *= -1;
                             velocity.x = d;
                             brick->Disable();
+                            break;
                         }
                     }
                 }

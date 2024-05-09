@@ -39,6 +39,7 @@ namespace Arkanoid
                     if(brick->IsActive())
                     {
                         isComplete = false;
+                        break;
                     }
                 }
             }
