@@ -44,7 +44,6 @@ namespace Asteroids
             void Initialize(Vector2 position, float linearVelocity, int size)
             {
                 this->size = size;
-                printf("New size: %d\n", this->size);
                 radius = this->size * 6;
                 rotation = GetRandomValue(-360, 360);
                 angularVelocity = GetRandomValue(-3, 3);
