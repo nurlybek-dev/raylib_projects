@@ -60,6 +60,11 @@ namespace Asteroids
         {
             isActive = false;
         }
+
+        void Reset()
+        {
+            isActive = false;
+        }
     
     private:
         Vector2 position;

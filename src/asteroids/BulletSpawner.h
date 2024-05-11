@@ -56,6 +56,14 @@ namespace Asteroids
             }
         }
 
+        void Reset()
+        {
+            for(auto& bullet : bullets)
+            {
+                bullet.Reset();
+            }
+        }
+
     private:
         std::vector<Bullet> bullets;
 };

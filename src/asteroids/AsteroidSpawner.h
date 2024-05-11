@@ -5,6 +5,7 @@
 #include <raylib.h>
 
 #include "Asteroid.h"
+#include "EventDispatcher.h"
 
 namespace Asteroids
 {
@@ -15,10 +16,10 @@ namespace Asteroids
             static constexpr int MAX_SMALL_ASTEROIDS = 16;
         
         public:
-
             AsteroidSpawner()
             {
                 asteroids.resize(MAX_BIG_ASTEROIDS + MAX_MEDIUM_ASTEROIDS + MAX_SMALL_ASTEROIDS);
+                EventDispatcher::AddEventListener(EventType::ASTEROID_DESTROYED, std::bind(&AsteroidSpawner::OnAsteroidDestroyed, this, std::placeholders::_1));
             }
 
             void Update()
@@ -26,14 +27,6 @@ namespace Asteroids
                 completed = true;
                 for(auto& asteroid : asteroids)
                 {
-                    if(asteroid.Destroyed()) {
-                        if(asteroid.GetSize() > 1) {
-                            Spawn(asteroid.GetPosition(), asteroid.GetLinerVelocity(), asteroid.GetSize() - 1);
-                            Spawn(asteroid.GetPosition(), asteroid.GetLinerVelocity(), asteroid.GetSize() - 1);
-                        }
-                        asteroid.Disable();
-                        continue;
-                    }
                     asteroid.Update();
                     if(asteroid.IsActive()) completed = false;
                 }
@@ -85,6 +78,25 @@ namespace Asteroids
             bool Completed()
             {
                 return completed;
+            }
+
+            void Reset()
+            {
+                for(auto& asteroid : asteroids)
+                {
+                    asteroid.Reset();
+                }
+            }
+
+            void OnAsteroidDestroyed(Event& event)
+            {
+                AsteroidDestroyedEvent& asteroidEvent = dynamic_cast<AsteroidDestroyedEvent&>(event);
+                Asteroid& asteroid = asteroidEvent.GetAsteroid();
+                int size = asteroid.GetSize();
+                if(size > 1) {
+                    Spawn(asteroid.GetPosition(), asteroid.GetLinerVelocity(), size - 1);
+                    Spawn(asteroid.GetPosition(), asteroid.GetLinerVelocity(), size - 1);
+                }
             }
 
         private:

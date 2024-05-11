@@ -56,6 +56,7 @@
 		"typeinfo": "cpp",
 		"iostream": "cpp",
 		"istream": "cpp",
-		"*.m": "cpp"
+		"*.m": "cpp",
+		"map": "cpp"
 	}
 }

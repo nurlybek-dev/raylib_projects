@@ -4,6 +4,8 @@
 #include "cmath"
 #include "raylib.h"
 
+#include "EventDispatcher.h"
+
 
 namespace Asteroids
 {
@@ -102,23 +104,19 @@ namespace Asteroids
 
             void Destroy()
             {
-                destroyedLastFrame = true;
-            }
-
-            bool Destroyed()
-            {
-                return destroyedLastFrame;
-            }
-
-            void Disable()
-            {
                 isActive = false;
-                destroyedLastFrame = false;
+                AsteroidDestroyedEvent event(*this);
+                EventDispatcher::DispatchEvent(event);
             }
         
             int GetSize()
             {
                 return size;
+            }
+
+            void Reset()
+            {
+                isActive = false;
             }
 
         private:

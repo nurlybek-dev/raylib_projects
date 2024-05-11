@@ -63,9 +63,10 @@ public:
                     {
                         runningApp = new Asteroids::Asteroids();
                     }
-                } 
+                }
 
-                DrawFPS(10, 10);
+                if(IsKeyPressed(KEY_F1)) showFPS = !showFPS;
+                if(showFPS) DrawFPS(10, 10);
 
 
             EndDrawing();
@@ -81,12 +82,7 @@ private:
     const int screenHeight = 450;
 
     Vector2 center;
-
-    float outerRadius = 180.0f;
-    float startAngle = 0.0f;
-    float endAngle = 180.0f;
-    float segments = 10.0f;
-    float minSegments = 4;
+    bool showFPS = false;
 
     AppBase* runningApp;
 
