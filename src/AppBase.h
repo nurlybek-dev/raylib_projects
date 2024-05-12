@@ -19,11 +19,11 @@ class AppBase {
             closed = true;
         }
 
-    private:
         virtual void Input() = 0;
         virtual void Update() = 0;
         virtual void Render() = 0;
 
+    private:
         bool closed = false;
 };
 

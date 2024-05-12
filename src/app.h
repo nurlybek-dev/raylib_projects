@@ -10,6 +10,7 @@
 #include "ping_pong/PingPong.h"
 #include "arkanoid/Arkanoid.h"
 #include "asteroids/Asteroids.h"
+#include "flappy_bird/FlappyBird.h"
 
 class App {
 public:
@@ -62,6 +63,10 @@ public:
                     else if (GuiButton({center.x - 50, 160, 100, 20}, "Asteroids"))
                     {
                         runningApp = new Asteroids::Asteroids();
+                    }
+                    else if (GuiButton({center.x - 50, 190, 100, 20}, "Flappy Bird"))
+                    {
+                        runningApp = new FlappyBird::FlappyBird();
                     }
                 }
 
