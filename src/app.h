@@ -11,6 +11,7 @@
 #include "arkanoid/Arkanoid.h"
 #include "asteroids/Asteroids.h"
 #include "flappy_bird/FlappyBird.h"
+#include "airplane_master/AirplaneMaster.h"
 
 class App {
 public:
@@ -67,6 +68,10 @@ public:
                     else if (GuiButton({center.x - 50, 190, 100, 20}, "Flappy Bird"))
                     {
                         runningApp = new FlappyBird::FlappyBird();
+                    }
+                    else if (GuiButton({center.x - 75, 220, 150, 20}, "Airplanes Dodge Rocket"))
+                    {
+                        runningApp = new AirplaneMaster::AirplaneMaster();
                     }
                 }
 
